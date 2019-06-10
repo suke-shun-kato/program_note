@@ -7,6 +7,16 @@
 1. アカウント名 > Apps 
 1. アプリを選択
 
+## プラン
+下記の３つがある
+- standard
+- premium
+- enterprise 
+
+価格と使えるAPI
+https://developer.twitter.com/en/pricing
+
+
 ## APIリファレンス
 1. Docs
 1. [API reference index](https://developer.twitter.com/en/docs/api-reference-index)
@@ -35,3 +45,4 @@
 #### GET oauth/authorize
 - 認可
 - PIN Code
+
