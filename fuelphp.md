@@ -1,5 +1,22 @@
 # FuelPHP
 
+# migration(マイグレーション)
+
+
+## コマンド
+
+```
+$ php oil refine migrate # 最新バージョンまでUP
+$ php oil refine migrate:up # 1バージョンUP
+$ php oil refine migrate:down # 1バージョンdown
+$ php oil refine migrate:up --version=10 # バージョン10までUP,現在が7だと8,9,10と実行
+```
+
+## マイグーレションのバージョンの管理
+
+`config/migrations.php` の `table` で設定したテーブル（初期値はmigration）で管理
+
+
 # ORM
 
 ## find, join
