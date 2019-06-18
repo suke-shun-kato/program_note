@@ -17,6 +17,19 @@
 use PHPUnit\Framework\TestCase;
 ```
 
+# assert
+
+https://qiita.com/rev84/items/12fbd16d210d6a86eff9
+
+## 配列
+
+書き途中
+
+```
+// 配列$arrayに値$valが存在する
+$this->assertContains($val, $array)
+```
+
 # モック、スタブ
 
 ## 1
