@@ -45,6 +45,9 @@ $mdl_xxxs = Model_XXX::find('all', [
             'join_on' => [
                 ['enabled', DB::expr(1)]
             ],
+            'where' => [
+                ['is_visible', 1],
+            ],
             'related' => [
                 'order_detail' => [
                     'join_type' => 'left outer', // LEFT OUTRE JOIN
