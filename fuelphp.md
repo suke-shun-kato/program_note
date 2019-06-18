@@ -1,5 +1,21 @@
 # FuelPHP
 
+
+
+# デバッグ
+
+## dump
+
+```
+Debug::dump($mdls);
+```
+
+## 生クエリを見る
+
+```
+DB::last_query();
+```
+
 # migration(マイグレーション)
 
 
