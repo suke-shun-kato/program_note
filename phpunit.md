@@ -23,11 +23,15 @@ https://qiita.com/rev84/items/12fbd16d210d6a86eff9
 
 ## 配列
 
-書き途中
+### 全要素を検証
 
 ```
-// 配列$arrayに値$valが存在する
-$this->assertContains($val, $array)
+    private function assertArrayElement(array $expected_ary, array $actual_ary) {
+        foreach ($expected_ary as $expected) {
+            $this->assertContains($expected, $actual_ary);
+        }
+        $this->assertCount(count($expected_ary), $actual_ary);
+    }
 ```
 
 # モック、スタブ
@@ -57,9 +61,6 @@ class StubTest extends TestCase
 
 ## 2
 
-プリシス環境では使えない
-
-
 ```
 class StubTest extends TestCase
 {
@@ -70,7 +71,7 @@ class StubTest extends TestCase
                      ->disableOriginalConstructor()
                      ->disableOriginalClone()
                      ->disableArgumentCloning()
-                     ->disallowMockingUnknownTypes()
+                     ->disallowMockingUnknownTypes()    // プリシス環境ではこのメソッドは使えない
                      ->getMock();
 
         // スタブの設定を行います
