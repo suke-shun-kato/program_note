@@ -2,6 +2,7 @@
 
 # 例外
 - [例外一覧](https://qiita.com/mikakane/items/dafd3d28c27311e5f429)
+- [PHP でどのように Exception/RuntimeException/LogicException を使い分けるか](https://qiita.com/tanakahisateru/items/e3e24f3825c4ba0c60e6)
 
 # HTTPステータスコード
 /*** ステータスコード（status code）をその場で返す  */
