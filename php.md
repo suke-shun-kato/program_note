@@ -1,8 +1,44 @@
 # PHP
 
-# 例外
-- [例外一覧](https://qiita.com/mikakane/items/dafd3d28c27311e5f429)
+# 例外, エラー, Exception, Error
+
+## 継承
+```
+Throwable
+    Error // アプリケーションロジック中で捕捉してはいけない 
+        TypeError
+        ParseError
+        AssertionError
+        ArithmeticError
+        DivisionByZeroError
+    Exception
+        LogicException  // Error と同じようにアプリケーションロジック中で捕捉してはいけない
+            BadFunctionCallException
+                BadMethodCallException
+            DomainException
+            InvalidArgumentException
+            LengthException
+            OutOfRangeException
+        RuntimeException 
+            OutOfBoundsException 
+            OverflowException 
+            RangeException 
+            UnderflowException 
+            UnexpectedValueException 
+            PDOException 
+```
+
+## アプリケーションロジックで補足catchすべきか
+
+| |してはいけない|なるべくしない|しないといけない|
+|:---:|:---|:---|:---|
+|システム|Error|||
+|ユーザー定義|LogicException|RuntimeException|Exception(Logic,Runtime以外)|
+
+## 参考
+
 - [PHP でどのように Exception/RuntimeException/LogicException を使い分けるか](https://qiita.com/tanakahisateru/items/e3e24f3825c4ba0c60e6)
+
 
 # HTTPステータスコード
 /*** ステータスコード（status code）をその場で返す  */
