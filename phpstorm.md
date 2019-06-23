@@ -1,5 +1,9 @@
 # Php Storm
 
+## .idea
+
+JetBrain のエディタの設定関連のパラメータを保存している
+
 ## 行ジャンプ
 
 ||mac|windows|
