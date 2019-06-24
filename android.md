@@ -1,5 +1,13 @@
 # Android
 
+# Preference
+
+## preference key
+
+- リソースに記述するのが一番
+- preferences.xml とコード内両方で使うた
+- Constant（定数）には書かない方がよい
+
 # AsyncTask
 https://qiita.com/maromaro3721/items/c9e16068d13e8ca217f5
 
