@@ -137,3 +137,11 @@ public class TwitterOAuthPreference extends Preference {
     }
 }
 ```
+
+# API level（API レベル）
+
+```
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+    ...
+}
+```
