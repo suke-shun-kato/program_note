@@ -1,5 +1,23 @@
 # PHP
 
+# オーバーロード, overload
+
+- 同じメソッド名で引数が異なるものを複数定義できる
+- abstract で引数を可変で定義することはできない
+- 戻り値は同じ型にしないといけない
+
+```
+    public int aaa() {
+        return 0;
+    }
+    public int aaa(int num) {
+        return 100/num;
+    }
+
+```
+
+
+
 # 例外, エラー, Exception, Error
 
 ## 継承
