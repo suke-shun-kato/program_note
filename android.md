@@ -145,3 +145,17 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
     ...
 }
 ```
+
+# debug用の設定
+
+- 下記URLを参考に設定する
+
+[Androidのデバッグ版とリリース版でパッケージ名、バージョン名、アプリ名、アイコンを変更する](https://qiita.com/masaibar/items/87cd03d3824ae8e1e16a)
+
+- app/src/main/AndroidManifest.xml を下記のようにしないといけないかも
+
+
+```
+        <provider
+            android:authorities="APPLICATION_ID.fileprovider" />
+```
