@@ -41,9 +41,13 @@ Throwable
 
 
 # HTTPステータスコード
-/*** ステータスコード（status code）をその場で返す  */
+
+## ステータスコード（status code）をその場で返す  
+
+```
 http_response_code(404);
 exit; // 必ずすること、しないとプログラムがそのまま走る
+```
 
 # DOM(HTML,XML)
 
