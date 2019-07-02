@@ -159,3 +159,22 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
         <provider
             android:authorities="APPLICATION_ID.fileprovider" />
 ```
+
+# アノテーション（@,annotation）
+
+## @RequiresApi  @TargetApiの違い
+
+`@RequiresApi`は呼び出し元でAPIレベルによる処理の分岐を書かないといけない
+
+`@TargetApi`は単にワーニングを出すだけ
+
+### 記述例
+
+```
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+```
+
+
+```
+@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+```
