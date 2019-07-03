@@ -74,13 +74,23 @@
 
 `<h1>`は下
 
-# birder
+# border
 
 ```css
 .aaa {
     border: 1px solid #333333;
 }
 
+```
+
+# ul,ol,li,
+
+## 「・」を消す
+
+```css
+ul {
+  list-style: none;
+}
 ```
 
 # em rem px
