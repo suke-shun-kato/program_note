@@ -58,6 +58,16 @@
 }
 ```
 
+# margin
+
+```css
+.class {
+    margin: 上 右 下 左;
+}
+```
+
 # em rem px
+
+rem を使うのが一番よいっぽい？
 
 - (CSSのfont-sizeが%とかemとかremとかvwで指定されてると、ビビっちゃう君と僕を救う2分)[https://qiita.com/39_isao/items/e8242901ba1aadb75676]
