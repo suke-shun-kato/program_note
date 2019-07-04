@@ -1,11 +1,15 @@
 # Php Storm
 
-## .idea
+# キャッシュクリア, 遅いとき
+
+`File > Invalidate Caches / Restart > Invalidate and Restart`
+
+# .idea
 
 JetBrain のエディタの設定関連のパラメータを保存している
 
-## 行ジャンプ
+# ショートカット
 
-||mac|windows|
+| |mac|windows|
 |:---|:---:|:---:|
 |行ジャンプ|cmd + L|ctr + G|
