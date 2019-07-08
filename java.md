@@ -38,6 +38,7 @@ Throwable
             ClassCastException
             IllegalArgumentException
                 NumberFormatException
+            IllegalStateException
             NullPointerException
             ....
 ```
