@@ -178,3 +178,12 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 ```
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 ```
+
+
+# パーミッション
+
+## 初期化コマンド
+
+```
+$ adb shell pm clear パッケージ名
+```
