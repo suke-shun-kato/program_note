@@ -24,3 +24,11 @@ FIND 文字列
 ```
 コマンド | コマンド
 ```
+
+# 文字コード
+
+windows10は標準でShift-Jisみたい
+
+## UTF-8への変更
+
+[Windowsコマンドプロンプト　文字コード設定](https://qiita.com/user0/items/a9116acc7bd7b70ecfb0)

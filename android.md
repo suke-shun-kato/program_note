@@ -178,3 +178,49 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 ```
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 ```
+
+
+# パーミッション
+
+## パーミッション許可が必要なときの処理 
+
+```
+// パーミッションの許可状態を取得
+final int permissionStatus = ContextCompat.checkSelfPermission(
+                getContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
+if (permissionStatus == PackageManager.PERMISSION_GRANTED) {
+// 許可OKの状態の場合
+        // 普通に処理を書く
+
+} else {
+// 許可NG、していない状態の場合
+    // Should we show an explanation?
+    if (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,
+            Manifest.permission.READ_CONTACTS)) {
+
+        // Show an expanation to the user *asynchronously* -- don't block
+        // this thread waiting for the user's response! After the user
+        // sees the explanation, try again to request the permission.
+
+    } else {
+
+        // No explanation needed, we can request the permission.
+
+        ActivityCompat.requestPermissions(thisActivity,
+                new String[] {Manifest.permission.READ_CONTACTS},
+                MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+        // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+        // app-defined int constant. The callback method gets the
+        // result of the request.
+    }
+}
+```
+
+https://developer.android.com/training/permissions/requesting.html
+
+## 初期化コマンド
+
+```
+$ adb shell pm clear パッケージ名
+```
