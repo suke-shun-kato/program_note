@@ -33,21 +33,21 @@
 ## 継承
 ```
 Throwable
-    Error // アプリケーションロジック中で捕捉してはいけない 
+    Error // アプリケーションロジック中で捕捉してはいけない,コンパイラがあれば、コンパイル時にエラーになってしまうようなもの
         TypeError
         ParseError
         AssertionError
         ArithmeticError
         DivisionByZeroError
     Exception
-        LogicException  // Error と同じようにアプリケーションロジック中で捕捉してはいけない
+        LogicException  // Error と同じようにアプリケーションロジック中で捕捉してはいけない, ライブラリ作者にとっての Error 
             BadFunctionCallException
                 BadMethodCallException
             DomainException
             InvalidArgumentException
             LengthException
             OutOfRangeException
-        RuntimeException 
+        RuntimeException // いくらロジックで努力しても、どうしても発生してしまう、運用/インフラレベルの障害の発生
             OutOfBoundsException 
             OverflowException 
             RangeException 
