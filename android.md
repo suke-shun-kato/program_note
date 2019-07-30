@@ -148,17 +148,34 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 
 # debug用の設定
 
-- 下記URLを参考に設定する
+## 基本的な考え
 
+- AndroidのアプリケーションIDの後ろに `.debug` をつける
+
+`xyz.goodistory.autowallpaper` だと `xyz.goodistory.autowallpaper.debug`
+
+- Javaのパッケージ名はそのまま
+
+`xyz.goodistory.autowallpaper` だと `xyz.goodistory.autowallpaper` のまま
+
+
+## 基本の変更
+
+下記URLを参考に設定する
 [Androidのデバッグ版とリリース版でパッケージ名、バージョン名、アプリ名、アイコンを変更する](https://qiita.com/masaibar/items/87cd03d3824ae8e1e16a)
 
-- app/src/main/AndroidManifest.xml を下記のようにしないといけないかも
-
+## マニフェスト app/src/main/AndroidManifest.xml
 
 ```
-        <provider
-            android:authorities="APPLICATION_ID.fileprovider" />
+<provider
+    android:authorities="${applicationId}.fileprovider" />
+<!-- APPLICATION_ID -->
 ```
+
+## ソースコード内でのアプリケーションID取得
+
+` Context#getPackageName() ` で `.debug` 付きのIDを取得できる
+
 
 # アノテーション（@,annotation）
 
