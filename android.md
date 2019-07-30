@@ -45,6 +45,8 @@ ContextはActivity,Serviceなど
 
 現在のandroidでは「`file://` スキーマ（ `File` クラス）」は使えないので（ファイルの読み書きなどができないので）「 `content://` 」スキーマに変換する必要がある
 
+[外部ストレージ の 他のアプリと共有できるファイル](https://developer.android.com/guide/topics/data/data-storage?hl=ja#SavingSharedFiles)
+
 
 ## ソース
 
