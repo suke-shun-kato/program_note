@@ -36,6 +36,51 @@ ContextはActivity,Serviceなど
 
 ### 暗示的Intent
 
+
+
+
+# FileProvider
+
+## 概要
+
+現在のandroidでは「`file://` スキーマ（ `File` クラス）」は使えないので（ファイルの読み書きなどができないので）「 `content://` 」スキーマに変換する必要がある
+
+
+## ソース
+
+```java
+File imagePath = new File(Context.getFilesDir(), "images");
+File newFile = new File(imagePath, "default_image.jpg");
+Uri contentUri = getUriForFile(getContext(), getPackageName() + ".fileprovider", newFile);
+```
+
+## manifest.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="xyz.goodistory.autowallpaper">
+    <provider
+        android:name="androidx.core.content.FileProvider"
+        android:authorities="${applicationId}.fileprovider"
+        android:grantUriPermissions="true"
+        android:exported="false"
+        >
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/file_paths" />
+    </provider>
+</manifest>
+```
+
+
+
+## 参考リンク
+
+- [公式](https://developer.android.com/reference/android/support/v4/content/FileProvider)
+
+
 # AsyncTask, 非同期
 
 ベストプラクティスは下記になる。
