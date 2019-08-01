@@ -14,6 +14,43 @@
 ## 参考URL
 - [公式 開発の基礎](https://developer.android.com/guide/topics/fundamentals.html?hl=ja)
 
+
+
+# View, Preference
+
+## コンストラクタ
+
+下記の4つのコンストラクタがあるが、使い分けは？
+
+```java
+View(Context context)
+View(Context context, AttributeSet attrs)
+View(Context context, AttributeSet attrs, int defStyleAttr)
+View(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) // API Level 21から
+```
+
+3番目と4番目は下記のスタイル定義を使う（2番目もデフォルトのを使用しているが・・・）
+- `res/values/styles.xml` 
+
+XMLの属性を増やす場合
+- `res/values/attrs.xml`
+
+### 参考リンク
+
+- [Qiita Viewの4つのコンストラクタ](https://qiita.com/alzybaad/items/aca3049b6a13ab78f945)
+
+## inflate
+
+下記の感じでinflate() する
+
+ ```java
+// LauoutInflate のインスタンスを取得
+LayoutInflater inflater = LayoutInflater.from(context);
+
+// resIDは XMLファイルのID R.layout.main_page など
+inflater.inflate(resId, rootViewGroup);
+```
+
 # Preference
 
 ## preference key
@@ -23,8 +60,39 @@
 - Constant（定数）には書かない方がよい
 
 
+## custom preference カスタムプリファレンス
+
+1. preference の preferences.xml 
 
 
+```xml
+ダイアログに表示するレイアウトファイルを作成してxmlにセット
+android:dialogLayout="@layout/fragment_time_preference_dialog"
+```
+
+2. sss
+
+```java
+
+   @Override
+    public void onBindViewHolder(PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
+
+        //// クリックしたときリスナーをセット
+        getPreferenceManager().setOnDisplayPreferenceDialogListener(
+                new PreferenceManager.OnDisplayPreferenceDialogListener() {
+                    /**
+                     * Called when a preference in the tree requests to display a dialog.
+                     *
+                     * @param preference The Preference object requesting the dialog.
+                     */
+                    @Override
+                    public void onDisplayPreferenceDialog(Preference preference) {
+                        preference.setFragment(TimePreferenceDialog.class.getName());
+                    }
+                });
+    }
+```
 
 # AsyncTask
 https://qiita.com/maromaro3721/items/c9e16068d13e8ca217f5
