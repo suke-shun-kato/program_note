@@ -1,5 +1,19 @@
 # Android
 
+# 開発の基礎
+
+## アプリケーションのコンポーネント
+
+下記の4要素から構成される
+
+- アクティビティ
+- サービス
+- ブロードキャスト レシーバ
+- コンテンツ プロバイダ
+
+## 参考URL
+- [公式 開発の基礎](https://developer.android.com/guide/topics/fundamentals.html?hl=ja)
+
 # Preference
 
 ## preference key
@@ -7,6 +21,10 @@
 - リソースに記述するのが一番
 - preferences.xml とコード内両方で使うた
 - Constant（定数）には書かない方がよい
+
+
+
+
 
 # AsyncTask
 https://qiita.com/maromaro3721/items/c9e16068d13e8ca217f5
@@ -39,24 +57,32 @@ ContextはActivity,Serviceなど
 
 
 
-# FileProvider
+# FileProvider　ファイルプロバイダ
 
-## 概要
+ファイルプロバイダはファイルに関する**コンテンツプロバイダ**
 
-現在のandroidでは「`file://` スキーマ（ `File` クラス）」は使えないので（ファイルの読み書きなどができないので）「 `content://` 」スキーマに変換する必要がある
+主に「`file://` スキーマ（ `File` クラス、ファイルpath）」から「 `content://`スキーマ (`Uri` クラス)」に変換するために使用する
 
-[外部ストレージ の 他のアプリと共有できるファイル](https://developer.android.com/guide/topics/data/data-storage?hl=ja#SavingSharedFiles)
+※現在のandroidではfileスキーマは直接使えないので、contentスキーマに変換する必要がある
 
 
-## ソース
+## ファイルの種類
 
-```java
-File imagePath = new File(Context.getFilesDir(), "images");
-File newFile = new File(imagePath, "default_image.jpg");
-Uri contentUri = getUriForFile(getContext(), getPackageName() + ".fileprovider", newFile);
-```
+Androidには下記の種類のファイルがある
 
-## manifest.xml
+- 内部ストレージ
+
+他のアプリからアクセスできない
+
+- 外部ストレージ
+
+他のアプリからアクセスできる、逆に他のアプリの外部ファイルへアクセスできる
+
+## マニフェストでの宣言
+
+ファイルプロバイダを使うには、下記のマニフェストの記述をしないといけない
+
+### manifest.xml
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -67,8 +93,9 @@ Uri contentUri = getUriForFile(getContext(), getPackageName() + ".fileprovider",
         android:name="androidx.core.content.FileProvider"
         android:authorities="${applicationId}.fileprovider"
         android:grantUriPermissions="true"
-        android:exported="false"
-        >
+        android:exported="false">
+
+        <!--ファイルプロバイダで使うストレージの種類を記述-->
         <meta-data
             android:name="android.support.FILE_PROVIDER_PATHS"
             android:resource="@xml/file_paths" />
@@ -76,11 +103,82 @@ Uri contentUri = getUriForFile(getContext(), getPackageName() + ".fileprovider",
 </manifest>
 ```
 
+`${applicationId}` で自分のアプリケーションIDを取得できる（例: `xyz.goodistory.autowallpape.debug`）
+
+### /res/xml/file_paths.xml
+
+上記の `@xml/file_paths` は下記のように記述する
+
+```xml
+<paths>
+    <!--下記のうち最低1つ記述しないといけない-->
+
+    <!--内部ストレージ-->
+    <files-path name="name" path="images/"/>     
+    <cache-path name="name" path="path" />
+
+    <!--外部ストレージ、他アプリ-->
+    <external-path name="name" path="path" />
+
+    <!--外部ストレージ、自アプリ-->
+    <external-files-path name="name" path="path" />
+    <external-cache-path name="name" path="path" />
+    <external-media-path name="name" path="path" />
+</paths>
+```
+
+
+## `File` クラス（fileスキーマ）からcontentスキーマのuriを取得するプログラム
+
+```java
+// 内部ストレージの画像が入っているディレクトリを取得
+File imagePath = new File(Context.getFilesDir(), "images");
+
+// 画像ディレクトリのdefault_image.jpgのパスを取得
+File newFile = new File(imagePath, "default_image.jpg");
+
+// contentスキーマに変換, 
+// getPackageName()はアプリケーションID名
+Uri contentUri = getUriForFile(getContext(), getPackageName() + ".fileprovider", newFile);
+```
+
+## 対応表
+
+
+|ファイルのタイプ|xml要素名|メソッド|ファイルPath（"./"で指定した時）|
+|---|---|---|---|
+|内部ストレージ、ファイル|files-path|context.getFilesDir()|/data/user/0/xyz.goodistory.autowallpaper.debug/files|
+|内部ストレージ、キャッシュ|cache-path|context.getCacheDir()|/data/user/0/xyz.goodistory.autowallpaper.debug/cache|
+|外部ストレージ、他アプリ|external-path|Environment.getExternalStorageDirectory()|/storage/emulated/0|
+|外部ストレージ、自アプリ、ファイル|external-files-path|context.getExternalFilesDir(null)|/storage/emulated/0/Android/data/xyz.goodistory.autowallpaper.debug/files|
+|外部ストレージ、自アプリ、キャッシュ|external-cache-path|context.getExternalCacheDir()|/storage/emulated/0/Android/data/xyz.goodistory.autowallpaper.debug/cache|
+|外部ストレージ、自アプリ、メディア|external-media-path|context.getExternalMediaDirs() API21|/storage/emulated/0/Android/media/xyz.goodistory.autowallpaper.debug|
+Environment.DIRECTORY_PICTURES
+
+※アプリケーションIDが `xyz.goodistory.autowallpaper.debug` のとき
+
+※ファイルPathは機種によって異なるかも、ZenFone4で確認
+
+
+
+
+
+
+
+
+
+
 
 
 ## 参考リンク
 
-- [公式](https://developer.android.com/reference/android/support/v4/content/FileProvider)
+- [公式 ストレージオプション](https://developer.android.com/guide/topics/data/data-storage?hl=ja)
+- [公式 FileProvider](https://developer.android.com/reference/android/support/v4/content/FileProvider)
+
+
+
+
+
 
 
 # AsyncTask, 非同期
@@ -221,7 +319,9 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 
 ## ソースコード内でのアプリケーションID取得
 
-` Context#getPackageName() ` で `.debug` 付きのIDを取得できる
+` Context#getPackageName() ` で `.debug` 付きのアプリケーションIDを取得できる
+
+※メソッド名がPackageNameになっているがJavaのパッケージ名ではない
 
 
 # アノテーション（@,annotation）
