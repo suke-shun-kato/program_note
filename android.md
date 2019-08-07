@@ -1,5 +1,9 @@
 # Android
 
+
+
+
+
 # 開発の基礎
 
 ## アプリケーションのコンポーネント
@@ -14,6 +18,63 @@
 ## 参考URL
 - [公式 開発の基礎](https://developer.android.com/guide/topics/fundamentals.html?hl=ja)
 
+# Locale と TimeZone
+
+## Locale
+
+言語と国（時差TimeZoneではない）
+
+### androidに設定されている値を取得
+
+```java
+ Locale.getDefault();    // java.util.Locale
+```
+
+## TimeZone
+
+タイムゾーン、時差
+
+### 日付取得、Dateオブジェクト取得
+
+#### 設定されているタイムゾーンで取得
+
+```java
+// Locale.getDefault()は時差ではない、言語・地域の設定
+// androidに設定されているデフォルトのTimeZoneが設定される
+SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+
+// 日時を取得
+Date date = simpleDateFormat.parse(yyyymmddhhmmss);
+```
+
+#### コード上でタイムゾーンを設定して取得
+
+```java
+// インスタンスを取得
+SimpleDateFormat simpleDateFormat = (SimpleDateFormat) SimpleDateFormat.getDateTimeInstance();
+
+// 文字列の形式をセット
+simpleDateFormat.applyPattern("yyyy-MM-dd hh:mm:ss");
+
+// TimeZoneを指定, ここでは +0時間を指定
+simpleDateFormat.setTimeZone( TimeZone.getTimeZone("UTC") );
+
+// 文字列から日時を取得
+Date date = simpleDateFormat.parse("2019/02/02 15:12:00");
+```
+
+### androidに設定されている値を取得
+
+```java
+TimeZone.getDefault();  // java.util.TimeZone;
+```
+
+### Dateオブジェクトからunixtimeを取得
+
+```java
+// unixtime, ミリ秒
+date.getTime();
+```
 
 
 # View, Preference
