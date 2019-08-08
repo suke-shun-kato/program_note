@@ -18,6 +18,61 @@
 ## 参考URL
 - [公式 開発の基礎](https://developer.android.com/guide/topics/fundamentals.html?hl=ja)
 
+
+# fragment フラグメント
+
+## アクティビティのレイアウトXMLで作成
+
+コード内で書かなくよい
+
+res/layout/activity.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <fragment android:name="com.example.news.ArticleListFragment"
+            android:id="@+id/list"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    <fragment android:name="com.example.news.ArticleReaderFragment"
+            android:id="@+id/viewer"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+</LinearLayout>
+```
+
+## Activityのコード内で作成
+
+```java
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MySettingsActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // フラグメントを動的に追加
+        getSupportFragmentManager()
+            .beginTransaction()
+            // activityのxmlのフラグメントを入れる場所を指定
+            .add(R.id.fragment_container, new ExampleFragment())    // replace()とかでもいける？
+            .commit();
+    }
+}
+```
+
+
+## 参考
+- [公式 フラグメント](https://developer.android.com/guide/components/fragments?hl=JA)
+
+
+
+
 # Locale と TimeZone
 
 ## Locale
