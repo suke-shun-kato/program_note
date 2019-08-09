@@ -1,4 +1,44 @@
-# PHP
+# Java
+
+
+# コンスタラクタ
+
+PHPと違って**継承されない**ので注意！
+
+ただし、例外で暗黙的な呼び出しは起こる
+
+## 暗示的な呼び出し
+
+```java
+class AaaClass {
+    // コンストラクタ書いてなくても空のコンストラクタが呼ばれている
+    /*
+    AaaClass() {
+    }
+    */
+}
+
+```
+
+## 暗黙的な呼び出し、継承
+
+```java
+class SuperClass {
+    public SuperClass() {
+        // なにかの処理
+    }
+}
+
+class SubClass extends SuperClass {
+    // コンストラクタがなくても暗黙的に下記のコンストラクタが書かれているのと同じ挙動をする
+    /*
+    public SubClass() {
+        super();
+    }
+    */
+}
+```
+
 
 # オーバーロード, overload
 
