@@ -13,7 +13,7 @@ PHPと違って**継承されない**ので注意！
 class AaaClass {
     // コンストラクタ書いてなくても空のコンストラクタが呼ばれている
     /*
-    AaaClass() {
+    public AaaClass() {
     }
     */
 }
