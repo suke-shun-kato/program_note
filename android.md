@@ -299,15 +299,15 @@ Androidには下記の種類のファイルがある
 
     <!--内部ストレージ-->
     <files-path name="name" path="images/"/>     
-    <cache-path name="name" path="path" />
+    <cache-path name="name" path="./" />
 
     <!--外部ストレージ、他アプリ-->
-    <external-path name="name" path="path" />
+    <external-path name="name" path="./" />
 
     <!--外部ストレージ、自アプリ-->
-    <external-files-path name="name" path="path" />
-    <external-cache-path name="name" path="path" />
-    <external-media-path name="name" path="path" />
+    <external-files-path name="name" path="./" />
+    <external-cache-path name="name" path="./" />
+    <external-media-path name="name" path="./" />
 </paths>
 ```
 
@@ -329,35 +329,28 @@ Uri contentUri = getUriForFile(getContext(), getPackageName() + ".fileprovider",
 ## 対応表
 
 
-|ファイルのタイプ|xml要素名|メソッド|ファイルPath（"./"で指定した時）|
-|---|---|---|---|
-|内部ストレージ、ファイル|files-path|context.getFilesDir()|/data/user/0/xyz.goodistory.autowallpaper.debug/files|
-|内部ストレージ、キャッシュ|cache-path|context.getCacheDir()|/data/user/0/xyz.goodistory.autowallpaper.debug/cache|
-|外部ストレージ、他アプリ|external-path|Environment.getExternalStorageDirectory()|/storage/emulated/0|
-|外部ストレージ、自アプリ、ファイル|external-files-path|context.getExternalFilesDir(null)|/storage/emulated/0/Android/data/xyz.goodistory.autowallpaper.debug/files|
-|外部ストレージ、自アプリ、キャッシュ|external-cache-path|context.getExternalCacheDir()|/storage/emulated/0/Android/data/xyz.goodistory.autowallpaper.debug/cache|
-|外部ストレージ、自アプリ、メディア|external-media-path|context.getExternalMediaDirs() API21|/storage/emulated/0/Android/media/xyz.goodistory.autowallpaper.debug|
-Environment.DIRECTORY_PICTURES
+|ファイルのタイプ|xml要素名|XML`path`属性|メソッド|ファイルPath|
+|:---|:---|:---|:---|:---|
+|内部ストレージ、ファイル|files-path|./|context.getFilesDir()|/data/user/0/xyz.goodistory.autowallpaper.debug/files|
+|内部ストレージ、キャッシュ|cache-path|./|context.getCacheDir()|/data/user/0/xyz.goodistory.autowallpaper.debug/cache|
+|外部ストレージ、他アプリ|external-path|./|Environment.getExternalStorageDirectory() API29で非推奨|/storage/emulated/0|
+| | |pictures/|Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) API29で非推奨|/storage/emulated/0/Pictures|
+| | |music/|Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC) API29で非推奨|/storage/emulated/0/Music|
+|外部ストレージ、自アプリ、ファイル|external-files-path|./|context.getExternalFilesDir(null)|/storage/emulated/0/Android/data/xyz.goodistory.autowallpaper.debug/files|
+| | |pictures/|context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)|/storage/emulated/0/Android/data/xyz.goodistory.autowallpaper.debug/files/Pictures|
+| | |music/|context.getExternalFilesDir(Environment.DIRECTORY_MUSIC)|/storage/emulated/0/Android/data/xyz.goodistory.autowallpaper.debug/files/Music|
+|外部ストレージ、自アプリ、キャッシュ|external-cache-path|./|context.getExternalCacheDir()|/storage/emulated/0/Android/data/xyz.goodistory.autowallpaper.debug/cache|
+|外部ストレージ、自アプリ、メディア|external-media-path|./|context.getExternalMediaDirs() API21～|/storage/emulated/0/Android/media/xyz.goodistory.autowallpaper.debug|
 
 ※アプリケーションIDが `xyz.goodistory.autowallpaper.debug` のとき
 
 ※ファイルPathは機種によって異なるかも、ZenFone4で確認
 
-
-
-
-
-
-
-
-
-
-
-
 ## 参考リンク
 
-- [公式 ストレージオプション](https://developer.android.com/guide/topics/data/data-storage?hl=ja)
-- [公式 FileProvider](https://developer.android.com/reference/android/support/v4/content/FileProvider)
+- [公式 - ストレージオプション](https://developer.android.com/guide/topics/data/data-storage?hl=ja)
+- [公式 - FileProvider](https://developer.android.com/reference/android/support/v4/content/FileProvider)
+- [Qiita - Android 画像ファイルを扱う際のFileとUriまとめ](https://qiita.com/wakamesoba98/items/98b79bdfde19612d12b0)
 
 
 
