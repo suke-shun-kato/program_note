@@ -355,7 +355,13 @@ Uri contentUri = getUriForFile(getContext(), getPackageName() + ".fileprovider",
 
 
 
+# MediaStore
 
+SQLiteにアクセスするときと同じようにContentResolver経由でアクセスする
+
+## 参考リンク
+
+- [公式 - コンテンツ プロバイダの基本](https://developer.android.com/guide/topics/providers/content-provider-basics#ContentURIs)
 
 
 # AsyncTask, 非同期
@@ -562,6 +568,30 @@ https://developer.android.com/training/permissions/requesting.html
 
 ## 初期化コマンド
 
+```shell script
+adb shell pm clear パッケージ名
 ```
-$ adb shell pm clear パッケージ名
+
+パッケージ名は下記のコマンドで出る
+
+```shell script
+adb shell pm list package
 ```
+
+
+# adb
+
+```shell script
+# パッケージ名一覧
+adb shell pm list package
+
+# パーミッション一覧
+adb shell pm list permissions
+
+# アプリの初期化（パーミッションなど）
+adb shell pm clear パッケージ名
+```
+
+
+
+
