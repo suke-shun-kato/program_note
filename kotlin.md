@@ -47,3 +47,12 @@ findViewById<Toolbar>(R.id.toolbar)
 ## 参考リンク
 - [Qiita - KotlinのRun, Let, Apply, Alsoを使い分け](https://qiita.com/JohnSmithWithHaruhi/items/e8f411c379483d4902aa)
 - [Qiita - Kotlin スコープ関数 用途まとめ](https://qiita.com/ngsw_taro/items/d29e3080d9fc8a38691e)
+
+
+# コンストラクタ
+プライマリコンストラクタが定義されているクラスでは、セカンダリコンストラクタでインスタンスを生成する場合、
+直接的または間接的にプライマリコンストラクタを呼び出す必要があります。
+
+init はどのコンストラクタでも実行される
+
+this でプライマリでinitでセカンダリ
