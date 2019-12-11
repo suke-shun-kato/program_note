@@ -1,5 +1,158 @@
 # Android
 
+# メモ
+
+class MainActivity: AppCompatActivity() {
+
+    lateinit var textView: TextView
+
+    // some transient state for the activity instance
+    var gameState: String? = null
+
+    companion object {
+        const val GAME_STATE_KEY: String = "game_state_key"
+        const val TEXT_VIEW_KEY: String = "text_view_key"
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+
+        // いつもの
+        super.onCreate(savedInstanceState)
+
+        setContentView(R.layout.main_activity)
+
+        // savedInstanceState から値を再取得する
+        gameState = savedInstanceState?.getString(GAME_STATE_KEY)
+
+        // initialize member TextView so we can manipulate it later
+        textView = findViewById(R.id.text_view)
+    }
+
+
+    //////// 回転
+    // onStart() の後に値を復活させたいときに呼ぶ、アクティビティ破棄されないとこれは呼ばれてないので、実質onCreate() と同じ感じだがタイミングが違う
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        // savedInstanceState から値を再取得する
+        textView.text = savedInstanceState?.getString(TEXT_VIEW_KEY)
+    }
+
+    // 最近はViewModelの方が良いらしい
+    // invoked when the activity may be temporarily destroyed, save the instance state here
+    override fun onSaveInstanceState(outState: Bundle?) {
+        outState?.run {
+            putString(GAME_STATE_KEY, gameState)
+            putString(TEXT_VIEW_KEY, textView.text.toString())
+        }
+        // call superclass to save any view hierarchy
+        super.onSaveInstanceState(outState)
+    }
+
+    ///// View の高さや幅をとりたいとき
+    override public void onWindowFocusChanged(boolean hasFocus) {
+
+        // フォーカスOFF（表示がOFF）になるときは途中で切り上げ
+        if (!hasFocus) {
+            return
+        }
+    }
+}
+
+
+12-09 22:57:13.727 D/Lifecycle: onCreate
+12-09 22:57:13.879 D/Lifecycle: onStart
+12-09 22:57:13.889 D/Lifecycle: onResume
+--------------- 画面回転など -----------------------
+12-09 22:57:19.375 D/Lifecycle: onPause
+12-09 22:57:19.375 D/Lifecycle: onSaveInstanceState
+12-09 22:57:19.379 D/Lifecycle: onStop
+12-09 22:57:19.379 D/Lifecycle: onDestroy
+12-09 22:57:19.434 D/Lifecycle: onCreate
+12-09 22:57:19.507 D/Lifecycle: onStart
+12-09 22:57:19.508 D/Lifecycle: onRestoreInstanceState
+12-09 22:57:19.510 D/Lifecycle: onResume
+
+
+
+///////// フラグメントのベストプラクティス
+class ExampleFragment : Fragment() {
+    //// いつもの
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View {
+
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.example_fragment, container, false)
+    }
+
+
+    //// Activity にメソッドを実装させたい場合
+    interface OnArticleSelectedListener {
+        fun onArticleSelected(articleUri: Uri)
+    }
+    var listener: OnArticleSelectedListener? = null
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        listener = context as? OnArticleSelectedListener
+        if (listener == null) {
+            throw ClassCastException("$context must implement OnArticleSelectedListener")
+        }
+
+    }
+
+
+    //// 回転
+    companion object {
+        const val KEY_AAA: String = "curChoice"
+    }
+    // 保存
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(KEY_AAA, curCheckPosition)
+    }
+    // 復帰は onCreateView() or onActivityCreated() のとき、任意のタイミングで
+
+
+
+    ///// 初期化
+    companion object {
+
+        const val KEY_INDEX = "index"
+        const val KEY_INDEX2 = "index2"
+        /**
+         * Create a new instance of DetailsFragment, initialized to
+         * show the text at 'index'.
+         */
+        fun newInstance(index: Int, index2: String): ExampleFragment {
+
+            return DetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(KEY_INDEX, index)
+                    putString(KEY_INDEX2, index2)
+                }
+            }
+        }
+    }
+}
+
+///// view のベストプラクティス
+class KotlinView : ConstraintLayout {
+
+    constructor(context: Context) : this(context, null)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int): this(context, attrs, defStyleAttr, 0)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int): super(context, attrs, defStyleAttr) {
+
+        val a = context.obtainStyledAttributes(
+                attrs, R.styleable.NavFooterButton, defStyleAttr, defStyleRes)
+        try {
+            a.getText(R.styleable.NavFooterButton_footer_label_text)
+            a.getDrawable(R.styleable.NavFooterButton_footer_iconImage_drawable)
+        } finally {
+            a.recycle()
+        }
+    }
+}
 
 
 
