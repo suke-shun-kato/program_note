@@ -1,4 +1,4 @@
-# Php Storm
+# PhpStorm
 
 # キャッシュクリア, 遅いとき
 
@@ -12,7 +12,8 @@ JetBrain のエディタの設定関連のパラメータを保存している
 
 | |mac|windows|
 |:---:|---:|---:|
-|行ジャンプ|cmd + L|ctr + G|
+|対応括弧へ移動|control + M||
+|行ジャンプ|command + L|ctr + G|
 |複数行選択|option + クリック||
 ||option -> option -> ↑ or ↓||
 ||shift + option + ドラッグ||
