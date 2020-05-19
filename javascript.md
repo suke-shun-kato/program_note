@@ -14,10 +14,18 @@ consoler.dir(element)
 document.forms[0]   // フォームが２つある場合はforms[1]などにする
 ```
 
-### 下記でどこのURLにGET/POSTしているかわかる
+### 下記でどこのURLにGET/POSTしているか分かる
 
 ```javascript
 document.forms[0].action
+```
+
+## 下記で指定formの全てのinputなどのnameが分かる
+
+```javascript
+Array.prototype.forEach.call(document.forms[0], function(item, index) {
+    console.log(index + ": " + item.name);
+});
 ```
 
 ## <select>
