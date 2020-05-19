@@ -24,7 +24,7 @@ document.forms[0].action
 
 ```javascript
 Array.prototype.forEach.call(document.forms[0], function(item, index) {
-    console.log(index + ": " + item.name);
+    console.log(index + ': ' + item.name);
 });
 ```
 
