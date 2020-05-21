@@ -21,6 +21,8 @@ JetBrain のエディタの設定関連のパラメータを保存している
 |複数行選択（キーボード）|option -> option -> ↑ or ↓||
 |左のタブへ移動|command + shift + [||
 |右のタブへ移動|command + shift + ]||
+|次のスプリッター（タブグループ）へ移動|option + tab||
+|前のスプリッター（タブグループ）へ移動|option + shift + tab||
 |一つ前の操作位置へ戻る|command ＋ [||
 |   |command ＋ option ＋ ←||
 |一つ先の操作位置へ戻る|	command ＋ ]||
