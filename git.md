@@ -38,7 +38,7 @@ GitHubやBitbucketなどの設定ページで上記を貼り付ける
 
 ## ホストの設定
 
-~/.ssh/config
+~/.ssh/config を下記のように書くと、接続先別に使用する「鍵」と「ユーザー名」を設定できる
 
 ```
 Host bitbucket.org
@@ -50,6 +50,13 @@ Host github.com
   User git
 
 ```
+
+- Host - 接続先のSSHのアドレス
+- IdentityFile - 鍵のファイルパス
+- User - 接続先のUser名
+
+例えば１番目だと `git@bitbucket.org` が接続先のアドレスになる
+
 
 ## SSHで繋がるかの確認
 
