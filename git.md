@@ -31,7 +31,7 @@ ssh-keygen -t rsa -f (ファイル名)
 SSH鍵の中身の文字列をコピー(mac)
 
 ```
-pbcopy < ~/.ssh/id_rsa.pub
+pbcopy < ~/.ssh/(鍵ファイル名).pub
 ```
 
 GitHubやBitbucketなどの設定ページで上記を貼り付ける
@@ -55,12 +55,18 @@ Host github.com
 - IdentityFile - 鍵のファイルパス
 - User - 接続先のUser名
 
-例えば１番目だと `git@bitbucket.org` が接続先のアドレスになる
+例えば１番目だと `git@bitbucket.org` が接続先で、鍵の場所が `~/.ssh/bitbucket` である
 
 
 ## SSHで繋がるかの確認
 
-下記はBitbucketの場合
+### GitHubの場合
+
+```
+ssh -T git@github.com
+```
+
+### Bitbucketの場合
 
 ```
 ssh -T git@bitbucket.org
