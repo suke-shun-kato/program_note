@@ -11,11 +11,19 @@
 # git push
 ## 途中までのコミットをpushする
 
+下記のコマンドでpushできる
 ```
-git push origin <commit>:<branch_name>
+git push <repository> <ｓｒｃ>:<dst>
+```
 
-# 例
+一つ前のコミットを origin リポジトリの feature/xxx ブランチにpush
+```
 git push origin HEAD~:feature/xxxx
+```
+
+foo ブランチを origin リポジトリの bar ブランチにpush
+```
+git push origin foo:bar
 ```
 
 # sshの設定
