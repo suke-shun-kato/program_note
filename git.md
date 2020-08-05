@@ -8,6 +8,16 @@
 
 [Windows10のgit logが文字化け（<E8><A4>...)するときの対処](https://qiita.com/Tachibana446/items/b6a869afa9959581dfc0)
 
+# git push
+## 途中までのコミットをpushする
+
+```
+git push origin <commit>:<branch_name>
+
+# 例
+git push origin HEAD~:feature/xxxx
+```
+
 # sshの設定
 
 ## SSH鍵の生成
