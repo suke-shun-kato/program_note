@@ -26,7 +26,7 @@
 
 ### 数字
 
-```shell script
+```
 if [ "$1" -le 1 ]; then
   echo '1以下'
 else
@@ -35,7 +35,7 @@ fi
 ```
 
 ### 文字列
-```shell script
+```
 if [ "$1" = aaa ]; then # 
   echo '変数は aaa や'
 fi
@@ -44,7 +44,7 @@ fi
 
 ## switch 文
 
-```shell script
+```
   case "$1" in
   up)
     echo 'up の分岐に入った'
@@ -65,7 +65,7 @@ fi
 
 # サンプルプログラム
 
-```shell script
+```
 #!/bin/bash
 
 # VOSとcainzの両方のコンテナを起動する
