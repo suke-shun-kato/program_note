@@ -63,9 +63,13 @@ Throwable
 |システム|Error|||
 |ユーザー定義|LogicException|RuntimeException|Exception(Logic,Runtime以外)|
 
-## 参考
+### 参考
 
-- [PHP でどのように Exception/RuntimeException/LogicException を使い分けるか](https://qiita.com/tanakahisateru/items/e3e24f3825c4ba0c60e6)
+[PHP でどのように Exception/RuntimeException/LogicException を使い分けるか](https://qiita.com/tanakahisateru/items/e3e24f3825c4ba0c60e6)
+
+##  まとめて例外をスローする
+
+[[PHP] まとめて例外をスローする小技 - Qiita](https://qiita.com/mpyw/items/6bd99ff62571c02feaa1)
 
 
 # HTTPステータスコード
