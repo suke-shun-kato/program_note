@@ -33,6 +33,12 @@
 
 ```
 
+## HTMLタグにstyle属性で直書き
+
+```
+<p><span style="font-size:larger; color:red;">重要！</span></p>
+```
+
 # クリアフィックス
 
 ```html
