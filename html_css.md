@@ -51,12 +51,23 @@
     float: right;
 }
 
-.clearfix::after{
+.clearfix::after {
   content: "";
   display: block;
   clear: both;
 }
 ```
+
+# display
+
+## block
+p、div、ul、h1〜h6などのタグの初期値はコレ
+
+## inline
+a、span、imgなどのタグの初期値はコレ
+
+## inline-block
+##none
 
 # margin
 
