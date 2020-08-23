@@ -4,6 +4,9 @@ swiftの文法とかは `swift.md` に書いています
 
 # DB, CoreData
 
+## メモ
+Entity = Table = モデル = NSManagedObject
+
 ## 参考リンク
 
 - [Documentation > Core Data - 公式](https://developer.apple.com/documentation/coredata)
