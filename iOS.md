@@ -5,7 +5,9 @@ swiftの文法とかは `swift.md` に書いています
 # DB, CoreData
 
 ## メモ
-Entity = Table = モデル = NSManagedObject
+
+- Entity = Table = NSManagedObject
+- ◯◯.xcdatamodel = BD = NSPersistentContainer
 
 ## 参考リンク
 
