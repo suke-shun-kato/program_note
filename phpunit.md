@@ -1,7 +1,7 @@
 # PHPUnit
 
 # 事前準備など
-```aaa.php
+```
     public function setUp() {
         // 各テスト前に実行   
     }
@@ -13,7 +13,7 @@
 
 # fuel
 
-```aaa.php
+```
 use PHPUnit\Framework\TestCase;
 ```
 
@@ -88,13 +88,18 @@ class StubTest extends TestCase
 
 # private static メソッドのテスト
 
+`ABC` クラスの `def` メソッドの場合
+
 ```
-class Test_XXXX extends TestCase {
+class Test_ABC_def extends TestCase {
+
+    private $ABC;
+    
     public function setUp() {
-        $this->Class_XXXX = new class {
+        $this->ABC = new class {
             public static function __callStatic(string $name, array $args) {
                 $rm = new \ReflectionMethod(
-                    Class_Name::class, method_name);
+                    ABC::class, 'def');
 
                 $rm->setAccessible(true);
                 return $rm->invokeArgs(null, $args);
@@ -103,7 +108,7 @@ class Test_XXXX extends TestCase {
     }
 
     public function test_xxxx() {
-        $this->Class_XXXX::add_supplier_order_id();
+        $this->ABC::def();
     }
 }
 ```
