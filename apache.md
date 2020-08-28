@@ -11,6 +11,8 @@ RewriteEngine on
 RewriteRule ^old.html$ http://www.example.com/new.html [L,R=301] 
 ```
 
+Lは「この処理はここで終わり（LAST）」
+
 ### 301リダイレクト
 
 301 Moved Permanently 恒久的に移動した
