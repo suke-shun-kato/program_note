@@ -9,11 +9,8 @@ swiftの文法とかは `swift.md` に書いています
 普通にstoryboardで 「TableViewCellの中にUIオブジェクトを入れる」 方法と 「xibを作成する」 方法の二種類がある
 
 
-TableViewCellの中にUIオブジェクトを入れる
-:    1回だけ使う場合
-
-xibを作成する
-:    他の場所でも使うとき
+- TableViewCellの中にUIオブジェクトを入れる: 1回だけ使う場合
+- xibを作成する: 他の場所でも使うとき
 
 
 ### TableViewCellの中にUIオブジェクトを入れる
