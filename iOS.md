@@ -2,6 +2,29 @@
 
 swiftの文法とかは `swift.md` に書いています
 
+# TableView
+
+## TableViewCell の中にUIオブジェクトを入れるとき
+
+普通にstoryboardで 「TableViewCellの中にUIオブジェクトを入れる」 方法と 「xibを作成する」 方法の二種類がある
+
+
+- TableViewCellの中にUIオブジェクトを入れる
+:    1回だけ使う場合
+
+- xibを作成する
+:    他の場所でも使うとき
+
+
+### TableViewCellの中にUIオブジェクトを入れる
+
+https://qiita.com/Ajyarimochi/items/0154030bde239d703806
+
+### xibを作成する
+
+https://qiita.com/hiromasa-fun/items/d4d115a63939246ff3cc
+
+
 # DB, CoreData
 
 ## メモ
