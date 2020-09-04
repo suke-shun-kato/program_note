@@ -24,12 +24,14 @@ https://qiita.com/hiromasa-fun/items/d4d115a63939246ff3cc
 
 # DB, CoreData
 
-## メモ
+## はじめに
+
+### メモ
 
 - Entity = Table = NSManagedObject
 - ◯◯.xcdatamodel = BD = NSPersistentContainer
 
-## 参考リンク
+### 参考リンク
 
 - [Documentation > Core Data - 公式](https://developer.apple.com/documentation/coredata)
 - [CoreDataをやさしく使う - Qiita](https://qiita.com/touyoubuntu/items/5133ba503da74bb39063)
