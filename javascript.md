@@ -23,6 +23,10 @@ for (let i = 0; i < fruits.length; i++) {
 }
 ```
 
+## 参考URL
+
+https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
+
 # chromeでのconsoleでの確認
 
 ## HTMLElement型のときコンソール出力が、HTMLではなくクラスで出力したい場合
