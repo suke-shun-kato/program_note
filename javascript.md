@@ -11,7 +11,13 @@ consoler.dir(element)
 ## <form>
 
 ```javascript
-document.forms[0]   // フォームが２つある場合はforms[1]などにする
+document.forms[i]   // フォームが２つある場合はforms[1]などにする
+```
+
+もしくは、例えば `name="aaaa"` のフォームだと下記
+
+```
+document.aaaa
 ```
 
 ### 下記でどこのURLにGET/POSTしているか分かる
@@ -20,7 +26,7 @@ document.forms[0]   // フォームが２つある場合はforms[1]などにす�
 document.forms[0].action
 ```
 
-## 下記で指定formの全てのinputなどのnameが分かる
+### 下記で指定formの全てのinputなどのnameが分かる
 
 ```javascript
 Array.prototype.forEach.call(document.forms[0], function(item, index) {
