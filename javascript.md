@@ -1,5 +1,28 @@
 # javascript
 
+# for、foreach、配列を回すとき
+
+配列を回すときは `.forEach()` ではなく、 `.filter()`, `.find()`, `.map()`, `.reduce()` を使おう
+
+さらに `for` は `forEach` 以上に使わないようにする
+
+## forEach
+
+```
+dogs.forEach(dog => {
+  console.log(dog.name);
+});
+```
+
+## for
+
+```
+let fruits = ["apple", "orange", "melon"]; // 長さが３の配列
+for (let i = 0; i < fruits.length; i++) {
+  console.log( fruits[i] );
+}
+```
+
 # chromeでのconsoleでの確認
 
 ## HTMLElement型のときコンソール出力が、HTMLではなくクラスで出力したい場合
