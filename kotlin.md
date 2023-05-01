@@ -17,7 +17,7 @@
 - Java の `Context context` にあたる
 
 ```kotlin
-(context: Context!, attrs: AttributeSet!, defStyleAttr: Int, defStyleRes: Int)
+method(context: Context!, attrs: AttributeSet!, defStyleAttr: Int, defStyleRes: Int)
 ```
 
 # スコープ関数、`run` `let` `apply` `also` `with` 
