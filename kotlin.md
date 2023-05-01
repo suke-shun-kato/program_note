@@ -1,5 +1,11 @@
 # Kotlin
 
+# ここでまとめるより
+
+下記のページを見たほうがよい
+
+- [３０分で覚えるKotlin文法 - Qiita](https://qiita.com/k5n/items/cc0377b75d8537ef8a85)
+
 # Android Developer を読むときのメモ
 
 ## !
