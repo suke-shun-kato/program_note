@@ -2,6 +2,20 @@
 
 swiftの文法とかは `swift.md` に書いています
 
+# ライブラリ
+
+| ツール名              | インストールライブラリを記述するファイル | コマンド |
+| :-------------------- | ---------------------------------------- | -------- |
+| CocoaPods             | Podfile                                  | pod      |
+| Carthage              | Cartfile                                 | carthage |
+| Swift Package Manager | ?                                        | ?        |
+
+
+
+- CocoaPods
+- Carthage
+- Swift Package Manager
+
 # TableView
 
 ## TableViewCell の中にUIオブジェクトを入れるとき
