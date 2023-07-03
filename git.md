@@ -8,6 +8,16 @@
 
 [Windows10のgit logが文字化け（<E8><A4>...)するときの対処](https://qiita.com/Tachibana446/items/b6a869afa9959581dfc0)
 
+# コミット時間の変更
+
+## 直近のコミット時間を現在の時間に修正
+
+Author時間もCommiter時間も現在の時刻に修正される
+
+```shell
+git commit --amend --reset-author
+```
+
 # git push
 ## 途中までのコミットをpushする
 
